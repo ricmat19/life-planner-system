@@ -1,0 +1,17 @@
+<div>
+    <form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+        <h2>Sign Up</h2>
+        <div>
+            <input type="text" name="username" placeholder="Email" [(ngModel)]="model.userName"/>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Password" [(ngModel)]="model.password"/>
+        </div>
+        <div>
+            <input type="password" name="re-entered password" placeholder="Re-Enter Password"/>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
