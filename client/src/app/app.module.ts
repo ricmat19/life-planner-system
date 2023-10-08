@@ -12,6 +12,9 @@ import { LoginFormComponent } from './modals/account-forms/login-form/login-form
 import { SignupFormComponent } from './modals/account-forms/signup-form/signup-form.component';
 import { ForgotPasswordFormComponent } from './modals/account-forms/forgot-password-form/forgot-password-form.component';
 import { HomeComponent } from './home/home.component';
+import { GameComponent } from './games/game/game.component';
+import { GamesComponent } from './games/games/games.component';
+import { SharedModule } from './modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,15 @@ import { HomeComponent } from './home/home.component';
     SignupFormComponent,
     ForgotPasswordFormComponent,
     HomeComponent,
+    GameComponent,
+    GamesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

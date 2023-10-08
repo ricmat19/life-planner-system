@@ -1,5 +1,6 @@
+import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../../../services/account.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-signup-form',
@@ -10,7 +11,7 @@ export class SignupFormComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +21,10 @@ export class SignupFormComponent implements OnInit {
       next: response => {
         this.cancelRegistration();
       },
-      error: error => console.log(error)
+      error: error => {
+        this.toastr.error(error.error),
+        console.log(error)
+      }
     })
   }
 
