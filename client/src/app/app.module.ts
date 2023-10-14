@@ -16,6 +16,8 @@ import { GameComponent } from './games/game/game.component';
 import { GamesComponent } from './games/games/games.component';
 import { SharedModule } from './modules/shared.module';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
+import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { LoadingInterceptor } from './interceptor/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,12 @@ import { ErrorInterceptor } from './interceptor/error.interceptor';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
